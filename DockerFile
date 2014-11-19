@@ -1,0 +1,12 @@
+# Written by Michael Rollins
+
+FROM centos:centos6
+MAINTAINER The CentOS Project <cloud-ops@centos.org>
+
+RUN yum -y update; yum clean all
+RUN yum -y install epel-release; yum clean all
+RUN yum -y install nagios; yum clean all
+
+EXPOSE 80
+
+CMD [ "chkconfig nagios on && service nagios start" ]
