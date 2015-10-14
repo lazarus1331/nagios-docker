@@ -7,6 +7,7 @@ RUN yum -y install nagios nagios-plugins apache2
 
 EXPOSE 80
 
-CMD /sbin/service nagios start
-CMD /sbin/service httpd start
+CMD /sbin/chkconfig nagios on && /sbin/chkconfig httpd on
+CMD /sbin/service nagios status && /sbin/service nagios start
+CMD /sbin/service httpd status && /sbin/service httpd start
 CMD while true;do uptime && sleep 10;done
